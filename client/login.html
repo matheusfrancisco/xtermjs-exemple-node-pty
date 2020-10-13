@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How to create web terminals</title>
+    <meta charset="UTF-8" />
+  </head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <body>
+   <!--Correct username: invitado / pass: hgm2015-->
+
+    <section class="form animated flipInX">
+      <h2>Login To Your Account</h2>
+      <p class="valid">Valid. Please wait a moment.</p>
+      <p class="error">Error. Please enter correct Username &amp; password.</p>
+      <form class="loginbox" autocomplete="off">
+        <input placeholder="Username" type="text" id="username"></input>
+        <input placeholder="Password" type="password" id="password"></input>
+    <button id="submit">Login</button>
+    </form>
+    </section>
+  </body>
+  <script>
+    $(document).ready(function() {
+    $('#username').focus();
+
+    $('#submit').click(function() {
+
+        event.preventDefault(); // prevent PageReLoad
+
+       var ValidEmail = $('#username').val() === 'buzzlabs'; // User validate
+        var ValidPassword = $('#password').val() === '123123'; // Password validate
+
+        if (ValidEmail === true && ValidPassword === true) { // if ValidEmail & ValidPassword
+            localStorage.setItem("login", "buzzlabs");
+            localStorage.setItem("password", "123123");
+            $('.valid').css('display', 'block');
+            window.location.href = "http://localhost:1234/index.html"; // go to home.html
+            
+        }
+        else {
+            $('.error').css('display', 'block'); // show error msg
+        }
+    });
+  });
+  </script>
+</html>
